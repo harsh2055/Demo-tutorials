@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Academy | Mumbai's #1 Coaching Institute</title>
+<meta name="description" content="Trusted by 10,000+ parents. SSC, CBSE, ICSE, NEET, JEE coaching in Mumbai.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Plus Jakarta Sans','system-ui','sans-serif']}}}}</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}::selection{background:#2563EB;color:#fff}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:3px}
+#preloader{position:fixed;inset:0;z-index:9999;background:#fff;display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
+.dark #preloader{background:#0F172A}#preloader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.spin{width:40px;height:40px;border:3px solid #E2E8F0;border-top-color:#2563EB;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+#scrollBar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#2563EB,#7C3AED,#F59E0B);z-index:9998;width:0}
+.glass{background:rgba(255,255,255,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.3)}
+.dark .glass{background:rgba(15,23,42,.82);border:1px solid rgba(51,65,85,.4)}
+.rv{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}.rv.on{opacity:1;transform:translateY(0)}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.f1{animation:fl 4s ease-in-out infinite}.f2{animation:fl 5s ease-in-out infinite .5s}.f3{animation:fl 4.5s ease-in-out infinite 1s}.f4{animation:fl 5.5s ease-in-out infinite 1.5s}
+.gt{background:linear-gradient(135deg,#2563EB,#7C3AED,#F59E0B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.dark .gt{background:linear-gradient(135deg,#60A5FA,#A78BFA,#FBBF24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pc{transition:all .4s cubic-bezier(.16,1,.3,1)}.pc:hover{transform:translateY(-5px);box-shadow:0 20px 40px -12px rgba(0,0,0,.12)}
+.dark .pc:hover{box-shadow:0 20px 40px -12px rgba(0,0,0,.5)}
+.hg{position:relative;overflow:hidden}.hg::before{content:'';position:absolute;top:50%;left:50%;width:180px;height:180px;background:radial-gradient(circle,rgba(37,99,235,.12),transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity .4s;pointer-events:none}.hg:hover::before{opacity:1}
+.fi{transition:all .4s cubic-bezier(.16,1,.3,1)}.pc:hover .fi{transform:scale(1.1) rotate(-5deg)}
+.hp{background-image:radial-gradient(circle at 1px 1px,rgba(37,99,235,.07) 1px,transparent 0);background-size:30px 30px}
+.dark .hp{background-image:radial-gradient(circle at 1px 1px,rgba(96,165,250,.05) 1px,transparent 0)}
+@keyframes pg{0%,100%{box-shadow:0 0 15px rgba(37,99,235,.15)}50%{box-shadow:0 0 30px rgba(37,99,235,.3)}}.pglow{animation:pg 3s ease-in-out infinite}
+.nl{position:relative}.nl::after{content:'';position:absolute;bottom:-3px;left:50%;width:0;height:2px;background:#2563EB;transition:all .3s;transform:translateX(-50%);border-radius:1px}.nl:hover::after{width:100%}
+.tc::before{content:'\201C';position:absolute;top:-8px;left:16px;font-size:72px;font-family:Georgia,serif;color:rgba(37,99,235,.08);line-height:1}
+.masonry{columns:3;column-gap:14px}.masonry>*{break-inside:avoid;margin-bottom:14px}
+@media(max-width:768px){.masonry{columns:2}}@media(max-width:480px){.masonry{columns:1}}
+#stickyBar{transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1)}#stickyBar.vis{transform:translateY(0)}
+.cn{font-variant-numeric:tabular-nums}
+#toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-10px);z-index:9999;background:#0F172A;color:#fff;padding:10px 20px;border-radius:12px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body class="font-sans bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased overflow-x-hidden">
+
+<div id="preloader"><div class="text-center"><div class="spin mx-auto mb-3"></div><p class="text-xs text-slate-400 font-medium tracking-widest uppercase">Loading Excellence</p></div></div>
+<div id="scrollBar"></div>
+<div id="toast"></div>
+
+<!-- NAVBAR -->
+<header class="fixed top-0 inset-x-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="glass rounded-2xl mt-3 px-4 sm:px-5 py-3 flex items-center justify-between shadow-lg shadow-black/5 dark:shadow-black/20">
+<a href="#" class="flex items-center gap-2 shrink-0">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-lg shadow-blue-500/30"><i data-lucide="graduation-cap" class="w-4 h-4 text-white"></i></div>
+<span class="hidden sm:inline text-base font-bold">Excel<span class="text-blue-600"> Academy</span></span>
+</a>
+<nav class="hidden lg:flex items-center gap-0.5">
+<a href="#results" class="nl px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300">Results</a>
+<a href="#why-us" class="nl px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300">Why Us</a>
+<a href="#courses" class="nl px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300">Courses</a>
+<a href="#faculty" class="nl px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300">Faculty</a>
+<a href="#reviews" class="nl px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300">Reviews</a>
+<a href="#contact" class="nl px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300">Contact</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="document.documentElement.classList.toggle('dark')" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="sun" class="w-4 h-4 text-slate-500 dark:hidden"></i><i data-lucide="moon" class="w-4 h-4 text-slate-400 hidden dark:block"></i></button>
+<a href="tel:+919876543210" class="hidden md:flex items-center gap-1 text-xs font-semibold text-blue-600"><i data-lucide="phone" class="w-3 h-3"></i>98765 43210</a>
+<a href="#contact" class="hidden sm:flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all hover:shadow-lg hover:shadow-blue-500/25 active:scale-95">Book Free Demo</a>
+<button onclick="document.getElementById('mob').classList.toggle('hidden');document.getElementById('mob').classList.toggle('flex')" class="lg:hidden w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800"><i data-lucide="menu" class="w-5 h-5"></i></button>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mob" class="hidden fixed inset-0 z-40 flex">
+<div class="absolute inset-0 bg-black/50" onclick="document.getElementById('mob').classList.add('hidden');document.getElementById('mob').classList.remove('flex')"></div>
+<div class="absolute right-0 top-0 bottom-0 w-72 bg-white dark:bg-slate-900 shadow-2xl p-6 pt-20 flex flex-col gap-1">
+<a href="#results" onclick="document.getElementById('mob').classList.add('hidden');document.getElementById('mob').classList.remove('flex')" class="px-4 py-3 rounded-xl text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-800">Results</a>
+<a href="#why-us" onclick="document.getElementById('mob').classList.add('hidden');document.getElementById('mob').classList.remove('flex')" class="px-4 py-3 rounded-xl text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-800">Why Us</a>
+<a href="#courses" onclick="document.getElementById('mob').classList.add('hidden');document.getElementById('mob').classList.remove('flex')" class="px-4 py-3 rounded-xl text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-800">Courses</a>
+<a href="#faculty" onclick="document.getElementById('mob').classList.add('hidden');document.getElementById('mob').classList.remove('flex')" class="px-4 py-3 rounded-xl text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-800">Faculty</a>
+<a href="#reviews" onclick="document.getElementById('mob').classList.add('hidden');document.getElementById('mob').classList.remove('flex')" class="px-4 py-3 rounded-xl text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-800">Reviews</a>
+<a href="#contact" onclick="document.getElementById('mob').classList.add('hidden');document.getElementById('mob').classList.remove('flex')" class="px-4 py-3 rounded-xl text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-800">Contact</a>
+<div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+<a href="#contact" class="flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold py-3 rounded-xl text-sm"><i data-lucide="calendar" class="w-4 h-4"></i>Book Free Demo</a>
+<a href="https://wa.me/919876543210" class="flex items-center justify-center gap-2 bg-green-500 text-white font-semibold py-3 rounded-xl text-sm">WhatsApp Now</a>
+</div>
+</div>
+</div>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+<div class="absolute inset-0 hp"></div>
+<div class="absolute top-20 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-blue-100/50 to-transparent dark:from-blue-900/15 rounded-full blur-3xl"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+<div class="grid lg:grid-cols-2 gap-10 items-center">
+<div class="text-center lg:text-left">
+<div class="rv inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-semibold px-4 py-2 rounded-full mb-6"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>Admissions Open 2025-26 — Limited Seats</div>
+<h1 class="rv text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-5" style="transition-delay:.1s">Where Average Students<br>Become <span class="gt">Confident Toppers</span></h1>
+<p class="rv text-base sm:text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8" style="transition-delay:.2s">Trusted by <strong class="text-slate-700 dark:text-slate-200">10,000+ parents</strong> across Mumbai for 18+ years. Personal attention, expert faculty & proven results.</p>
+<div class="rv flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start mb-9" style="transition-delay:.3s">
+<a href="#contact" class="group w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-7 py-3.5 rounded-2xl transition-all hover:shadow-xl hover:shadow-blue-500/25 active:scale-[.97]"><i data-lucide="calendar-check" class="w-4 h-4"></i>Book Free Demo Class<i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i></a>
+<a href="https://wa.me/919876543210" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-7 py-3.5 rounded-2xl transition-all hover:shadow-xl hover:shadow-green-500/25 active:scale-[.97]"><i data-lucide="message-circle" class="w-4 h-4"></i>WhatsApp Now</a>
+</div>
+<div class="rv flex flex-wrap items-center gap-4 justify-center lg:justify-start" style="transition-delay:.4s">
+<div class="flex items-center gap-2"><div class="flex -space-x-2"><img src="https://picsum.photos/seed/a1/32/32.jpg" class="w-7 h-7 rounded-full border-2 border-white dark:border-slate-950 object-cover"><img src="https://picsum.photos/seed/a2/32/32.jpg" class="w-7 h-7 rounded-full border-2 border-white dark:border-slate-950 object-cover"><img src="https://picsum.photos/seed/a3/32/32.jpg" class="w-7 h-7 rounded-full border-2 border-white dark:border-slate-950 object-cover"><div class="w-7 h-7 rounded-full border-2 border-white dark:border-slate-950 bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-[9px] font-bold text-blue-700">+9K</div></div><span class="text-xs text-slate-500 font-medium">Active Students</span></div>
+<div class="w-px h-7 bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex items-center gap-1"><div class="flex text-amber-400"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div><span class="text-xs text-slate-500">4.9 Google</span></div>
+<div class="w-px h-7 bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-green-500"></i><span class="text-xs text-slate-500">Registered</span></div>
+</div>
+</div>
+<div class="relative hidden lg:flex items-center justify-center min-h-[460px]">
+<div class="rv relative z-10 w-[280px] rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10 pglow"><img src="https://picsum.photos/seed/mumbai-class/560/700.jpg" class="w-full h-[380px] object-cover"><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5"><p class="text-white font-bold">Our Smart Classroom</p><p class="text-white/60 text-xs">Andheri West, Mumbai</p></div></div>
+<div class="f1 absolute -left-4 top-4 bg-white dark:bg-slate-800 rounded-2xl p-3 shadow-xl border border-slate-100 dark:border-slate-700 w-[170px]"><div class="flex items-center gap-2 mb-1"><div class="w-8 h-8 rounded-lg bg-green-100 dark:bg-green-900/40 flex items-center justify-center"><i data-lucide="trophy" class="w-4 h-4 text-green-600"></i></div><div><p class="text-[10px] text-slate-400">SSC 2024</p><p class="text-sm font-bold">95.6%</p></div></div><p class="text-[10px] text-slate-400">Highest This Year</p></div>
+<div class="f2 absolute -right-2 top-24 bg-white dark:bg-slate-800 rounded-2xl p-3 shadow-xl border border-slate-100 dark:border-slate-700"><div class="flex items-center gap-1 mb-1"><div class="flex -space-x-1"><img src="https://picsum.photos/seed/b1/20/20.jpg" class="w-5 h-5 rounded-full border-2 border-white dark:border-slate-800 object-cover"><img src="https://picsum.photos/seed/b2/20/20.jpg" class="w-5 h-5 rounded-full border-2 border-white dark:border-slate-800 object-cover"><img src="https://picsum.photos/seed/b3/20/20.jpg" class="w-5 h-5 rounded-full border-2 border-white dark:border-slate-800 object-cover"></div><span class="text-[10px] text-green-600 font-bold">+12 today</span></div><p class="text-[10px] text-slate-400">9,847 enrolled</p></div>
+<div class="f3 absolute -left-2 bottom-16 bg-white dark:bg-slate-800 rounded-2xl p-3 shadow-xl border border-slate-100 dark:border-slate-700 w-[190px]"><div class="flex text-amber-400 mb-1"><i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i><i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i><i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i><i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i><i data-lucide="star" class="w-2.5 h-2.5 fill-current"></i></div><p class="text-[11px] text-slate-600 dark:text-slate-300 italic">"My son went from 65% to 92%!"</p><p class="text-[10px] text-slate-400 mt-1">— Mrs. Sunita Patel</p></div>
+<div class="f4 absolute -right-4 bottom-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-3 shadow-xl shadow-blue-500/30 text-white w-[120px] text-center"><p class="text-2xl font-extrabold cn" data-count="18">0</p><p class="text-[10px] text-blue-200">Years of Trust</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="relative z-10 -mt-6 pb-12"><div class="max-w-5xl mx-auto px-4 sm:px-6"><div class="glass rounded-2xl p-5 sm:p-7 shadow-xl"><div class="grid grid-cols-2 md:grid-cols-4 gap-5"><div class="text-center"><p class="text-2xl sm:text-3xl font-extrabold text-blue-600 cn" data-count="10000">0</p><p class="text-xs text-slate-500 mt-0.5">Students Taught</p></div><div class="text-center"><p class="text-2xl sm:text-3xl font-extrabold text-blue-600 cn" data-count="96">0</p><p class="text-xs text-slate-500 mt-0.5">% Success Rate</p></div><div class="text-center"><p class="text-2xl sm:text-3xl font-extrabold text-blue-600 cn" data-count="1200">0</p><p class="text-xs text-slate-500 mt-0.5">Google Reviews</p></div><div class="text-center"><p class="text-2xl sm:text-3xl font-extrabold text-blue-600 cn" data-count="150">0</p><p class="text-xs text-slate-500 mt-0.5">Toppers in 2024</p></div></div></div></div></section>
+
+<!-- RESULTS -->
+<section id="results" class="py-16 sm:py-24"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="trophy" class="w-3.5 h-3.5"></i>Proven Track Record</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">Results That <span class="gt">Build Trust</span></h2></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+<div class="rv pc bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><div class="flex items-center gap-3 mb-3"><div class="relative"><img src="https://picsum.photos/seed/t1/64/64.jpg" class="w-12 h-12 rounded-xl object-cover"><div class="absolute -top-1 -right-1 text-sm">🥇</div></div><div><p class="font-bold text-sm">Aarav Sharma</p><p class="text-[11px] text-slate-400">SSC 2024</p></div></div><div class="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-3 text-center"><p class="text-2xl font-extrabold text-amber-600">95.6%</p><p class="text-[10px] text-amber-700 dark:text-amber-500">State Rank — 23rd</p></div><p class="text-[10px] text-slate-400 mt-2">Earlier: 68% → +27.6%</p></div>
+<div class="rv pc bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><div class="flex items-center gap-3 mb-3"><div class="relative"><img src="https://picsum.photos/seed/t2/64/64.jpg" class="w-12 h-12 rounded-xl object-cover"><div class="absolute -top-1 -right-1 text-sm">🥈</div></div><div><p class="font-bold text-sm">Priya Patel</p><p class="text-[11px] text-slate-400">CBSE 2024</p></div></div><div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 text-center"><p class="text-2xl font-extrabold text-blue-600">97.2%</p><p class="text-[10px] text-blue-700 dark:text-blue-500">School Topper</p></div><p class="text-[10px] text-slate-400 mt-2">Earlier: 74% → +23.2%</p></div>
+<div class="rv pc bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><div class="flex items-center gap-3 mb-3"><div class="relative"><img src="https://picsum.photos/seed/t3/64/64.jpg" class="w-12 h-12 rounded-xl object-cover"><div class="absolute -top-1 -right-1 text-sm">🥉</div></div><div><p class="font-bold text-sm">Rohan Mehta</p><p class="text-[11px] text-slate-400">NEET 2024</p></div></div><div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-3 text-center"><p class="text-2xl font-extrabold text-green-600">685/720</p><p class="text-[10px] text-green-700 dark:text-green-500">AIR — 1247</p></div><p class="text-[10px] text-slate-400 mt-2">First attempt with Excel</p></div>
+<div class="rv pc bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><div class="flex items-center gap-3 mb-3"><div class="relative"><img src="https://picsum.photos/seed/t4/64/64.jpg" class="w-12 h-12 rounded-xl object-cover"><div class="absolute -top-1 -right-1 text-sm">⭐</div></div><div><p class="font-bold text-sm">Ananya Iyer</p><p class="text-[11px] text-slate-400">JEE Adv. 2024</p></div></div><div class="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-3 text-center"><p class="text-2xl font-extrabold text-purple-600">312/360</p><p class="text-[10px] text-purple-700 dark:text-purple-500">AIR — 892</p></div><p class="text-[10px] text-slate-400 mt-2">IIT Bombay — CS</p></div>
+</div>
+<div class="rv bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl p-7 sm:p-10 text-white relative overflow-hidden"><div class="absolute top-0 right-0 w-52 h-52 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div><div class="relative grid md:grid-cols-2 gap-8 items-center"><div><h3 class="text-xl sm:text-2xl font-bold mb-3">Real Transformations</h3><p class="text-blue-100 text-sm leading-relaxed mb-5">Our unique mentoring has helped thousands discover their true potential.</p><div class="flex flex-wrap gap-2"><div class="bg-white/10 rounded-lg px-3 py-1.5 text-xs">📈 Avg. +28%</div><div class="bg-white/10 rounded-lg px-3 py-1.5 text-xs">🏆 150+ Toppers</div><div class="bg-white/10 rounded-lg px-3 py-1.5 text-xs">🎯 96% Pass</div></div></div><div class="space-y-3"><div class="bg-white/10 rounded-xl p-3 flex items-center gap-3"><div class="text-center"><p class="text-[10px] text-blue-200">Before</p><p class="text-xl font-bold text-red-300">54%</p></div><i data-lucide="arrow-right" class="w-4 h-4 text-blue-200"></i><div class="text-center"><p class="text-[10px] text-blue-200">After</p><p class="text-xl font-bold text-green-300">89%</p></div><div class="ml-auto text-right"><p class="text-xs font-semibold">Vikram Joshi</p><p class="text-[10px] text-blue-200">SSC Science</p></div></div><div class="bg-white/10 rounded-xl p-3 flex items-center gap-3"><div class="text-center"><p class="text-[10px] text-blue-200">Before</p><p class="text-xl font-bold text-red-300">61%</p></div><i data-lucide="arrow-right" class="w-4 h-4 text-blue-200"></i><div class="text-center"><p class="text-[10px] text-blue-200">After</p><p class="text-xl font-bold text-green-300">94%</p></div><div class="ml-auto text-right"><p class="text-xs font-semibold">Meera Kulkarni</p><p class="text-[10px] text-blue-200">CBSE Commerce</p></div></div><div class="bg-white/10 rounded-xl p-3 flex items-center gap-3"><div class="text-center"><p class="text-[10px] text-blue-200">Before</p><p class="text-xl font-bold text-red-300">72%</p></div><i data-lucide="arrow-right" class="w-4 h-4 text-blue-200"></i><div class="text-center"><p class="text-[10px] text-blue-200">After</p><p class="text-xl font-bold text-green-300">98.4%</p></div><div class="ml-auto text-right"><p class="text-xs font-semibold">Arjun Desai</p><p class="text-[10px] text-blue-200">ICSE Science</p></div></div></div></div></div>
+</div></section>
+
+<!-- WHY US -->
+<section id="why-us" class="py-16 sm:py-24 bg-slate-50/80 dark:bg-slate-900/50 relative"><div class="absolute inset-0 hp opacity-50"></div><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i>Why Parents Trust Us</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">Not Just Coaching. <span class="gt">Complete Partner.</span></h2></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="whyGrid"></div>
+</div></section>
+
+<!-- COURSES -->
+<section id="courses" class="py-16 sm:py-24"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>Our Courses</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">One Institute. <span class="gt">Every Stream.</span></h2></div>
+<div class="rv flex flex-wrap justify-center gap-2 mb-10" id="filterBtns"></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="cGrid"></div>
+</div></section>
+
+<!-- FACULTY -->
+<section id="faculty" class="py-16 sm:py-24 bg-slate-50/80 dark:bg-slate-900/50 relative"><div class="absolute inset-0 hp opacity-50"></div><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="award" class="w-3.5 h-3.5"></i>Expert Faculty</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">Mumbai's <span class="gt">Best Teachers</span></h2></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="facGrid"></div>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews" class="py-16 sm:py-24"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="message-square-heart" class="w-3.5 h-3.5"></i>Reviews</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">1,200+ Happy Families. <span class="gt">Countless Smiles.</span></h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="revGrid"></div>
+<div class="rv bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-center relative overflow-hidden mt-8"><div class="absolute inset-0 opacity-10" style="background-image:url('https://picsum.photos/seed/aud/1200/300.jpg');background-size:cover"></div><div class="relative"><div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-3 cursor-pointer hover:bg-white/20 transition-colors" onclick="showToast('Video testimonials coming soon!')"><i data-lucide="play" class="w-6 h-6 text-white ml-0.5"></i></div><h3 class="text-lg font-bold text-white mb-1">Watch Success Stories</h3><p class="text-xs text-slate-300">Hear from our toppers and their parents.</p></div></div>
+</div></section>
+
+<!-- GALLERY -->
+<section class="py-16 sm:py-24 bg-slate-50/80 dark:bg-slate-900/50 relative"><div class="absolute inset-0 hp opacity-50"></div><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="image" class="w-3.5 h-3.5"></i>Gallery</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">It's a <span class="gt">Family.</span></h2></div>
+<div class="masonry" id="galGrid"></div>
+</div></section>
+
+<!-- FEATURES -->
+<section class="py-16 sm:py-24"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i>Tech-Driven</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">We <span class="gt">Innovate.</span></h2></div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" id="featGrid"></div>
+</div></section>
+
+<!-- CTA -->
+<section class="py-16 sm:py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900"></div>
+<div class="absolute inset-0 hp opacity-20"></div>
+<div class="relative max-w-4xl mx-auto px-4 text-center">
+<div class="rv"><p class="text-blue-200 text-sm font-medium mb-3">Every parent's dream...</p>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">Give Your Child the Right Guidance<br>for a <span class="text-amber-400">Brighter Future</span></h2>
+<p class="text-blue-100 text-sm sm:text-base max-w-xl mx-auto mb-8">One decision today can change their entire academic journey.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+<a href="#contact" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-blue-700 text-sm font-bold px-8 py-4 rounded-2xl hover:bg-blue-50 transition-all active:scale-[.97]"><i data-lucide="calendar-check" class="w-4 h-4"></i>Book Free Demo</a>
+<a href="https://wa.me/919876543210" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-green-500 text-white text-sm font-bold px-8 py-4 rounded-2xl hover:bg-green-600 transition-all active:scale-[.97]"><i data-lucide="message-circle" class="w-4 h-4"></i>WhatsApp Now</a>
+<a href="tel:+919876543210" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white text-sm font-bold px-8 py-4 rounded-2xl hover:bg-white/20 transition-all active:scale-[.97]"><i data-lucide="phone" class="w-4 h-4"></i>Call Now</a>
+</div>
+<div class="flex flex-wrap justify-center gap-4 text-blue-200 text-xs"><span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i>Free Demo</span><span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i>No Obligation</span><span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i>Instant Response</span><span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i>Limited Seats</span></div>
+</div></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-16 sm:py-24 bg-slate-50/80 dark:bg-slate-900/50 relative"><div class="absolute inset-0 hp opacity-50"></div><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14"><div class="rv inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-xs font-semibold px-4 py-2 rounded-full mb-4"><i data-lucide="send" class="w-3.5 h-3.5"></i>Get In Touch</div><h2 class="rv text-3xl sm:text-4xl font-extrabold tracking-tight mb-3" style="transition-delay:.1s">Start the <span class="gt">Success Journey</span></h2></div>
+<div class="grid lg:grid-cols-5 gap-8">
+<div class="lg:col-span-3"><div class="rv bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 shadow-sm">
+<form onsubmit="event.preventDefault();showToast('✅ Inquiry submitted! We will call you within 30 minutes.')">
+<div class="grid sm:grid-cols-2 gap-4 mb-4">
+<div><label class="text-xs font-semibold mb-1 block">Parent's Name *</label><input type="text" required placeholder="Your name" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-blue-500 outline-none"></div>
+<div><label class="text-xs font-semibold mb-1 block">Phone *</label><input type="tel" required placeholder="98XXXXXXXX" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-blue-500 outline-none"></div>
+</div>
+<div class="grid sm:grid-cols-2 gap-4 mb-4">
+<div><label class="text-xs font-semibold mb-1 block">Student Name</label><input type="text" placeholder="Student name" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-blue-500 outline-none"></div>
+<div><label class="text-xs font-semibold mb-1 block">Class</label><select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"><option>Select</option><option>8th</option><option>9th</option><option>10th</option><option>11th Sci</option><option>11th Com</option><option>12th Sci</option><option>12th Com</option><option>Dropper</option></select></div>
+</div>
+<div class="mb-4"><label class="text-xs font-semibold mb-1 block">Course</label><select class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-500 focus:ring-2 focus:ring-blue-500 outline-none"><option>Select</option><option>SSC</option><option>CBSE</option><option>ICSE</option><option>Commerce</option><option>NEET</option><option>JEE</option><option>MHT-CET</option><option>Spoken English</option><option>Coding</option><option>Olympiad</option></select></div>
+<div class="mb-4"><label class="text-xs font-semibold mb-1 block">Message</label><textarea rows="2" placeholder="Any requirement..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-blue-500 outline-none resize-none"></textarea></div>
+<button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-xl transition-all hover:shadow-lg active:scale-[.98] flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i>Submit — Get Free Demo</button>
+<p class="text-[10px] text-slate-400 text-center mt-2">We respect your privacy.</p>
+</form></div></div>
+<div class="lg:col-span-2 space-y-4">
+<div class="rv bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><div class="flex items-start gap-3"><div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0"><i data-lucide="map-pin" class="w-5 h-5 text-blue-600"></i></div><div><h4 class="text-sm font-bold mb-0.5">Address</h4><p class="text-xs text-slate-500 leading-relaxed">2nd Floor, Excel Tower, SV Road,<br>Near Andheri Metro Station,<br>Andheri West, Mumbai — 400058</p></div></div></div>
+<div class="rv bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><div class="flex items-start gap-3"><div class="w-10 h-10 rounded-xl bg-green-50 dark:bg-green-900/30 flex items-center justify-center shrink-0"><i data-lucide="phone" class="w-5 h-5 text-green-600"></i></div><div><h4 class="text-sm font-bold mb-0.5">Call Us</h4><p class="text-xs text-slate-500">+91 98765 43210</p></div></div></div>
+<div class="rv bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><div class="flex items-start gap-3"><div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center shrink-0"><i data-lucide="clock" class="w-5 h-5 text-amber-600"></i></div><div><h4 class="text-sm font-bold mb-0.5">Timings</h4><p class="text-xs text-slate-500">Mon–Sat: 7AM–9PM<br>Sunday: 9AM–2PM</p></div></div></div>
+<div class="rv bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm"><h4 class="text-sm font-bold mb-3">Follow Us</h4><div class="flex gap-2"><a href="#" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-blue-50 dark:hover:bg-slate-700"><i data-lucide="instagram" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i></a><a href="#" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-blue-50 dark:hover:bg-slate-700"><i data-lucide="youtube" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i></a><a href="#" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-blue-50 dark:hover:bg-slate-700"><i data-lucide="facebook" class="w-4 h-4 text-slate-600 dark:text-slate-300"></i></a></div></div>
+<div class="rv rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm h-44"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.9!2d72.8311!3d19.1197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA3JzExLjAiTiA3MsKwNDknNTIuMCJF!5e0!3m2!1sen!2sin!4v1" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"></iframe></div>
+</div></div></div></section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 dark:bg-slate-950 text-white pt-14 pb-6"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div><div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center"><i data-lucide="graduation-cap" class="w-4 h-4 text-white"></i></div><span class="text-base font-bold">Excel<span class="text-blue-400"> Academy</span></span></div><p class="text-xs text-slate-400 leading-relaxed mb-4">Mumbai's most trusted coaching institute since 2007.</p><div class="flex items-center gap-2 mb-3"><div class="flex text-amber-400"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div><span class="text-xs text-slate-400">4.9/5 (1,200+ reviews)</span></div></div>
+<div><h4 class="text-sm font-bold mb-4">Courses</h4><ul class="space-y-2 text-xs text-slate-400"><li><a href="#courses" class="hover:text-blue-400">SSC Coaching</a></li><li><a href="#courses" class="hover:text-blue-400">CBSE Coaching</a></li><li><a href="#courses" class="hover:text-blue-400">ICSE Coaching</a></li><li><a href="#courses" class="hover:text-blue-400">Commerce</a></li><li><a href="#courses" class="hover:text-blue-400">NEET</a></li><li><a href="#courses" class="hover:text-blue-400">JEE</a></li></ul></div>
+<div><h4 class="text-sm font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-xs text-slate-400"><li><a href="#results" class="hover:text-blue-400">Results</a></li><li><a href="#why-us" class="hover:text-blue-400">Why Us</a></li><li><a href="#faculty" class="hover:text-blue-400">Faculty</a></li><li><a href="#reviews" class="hover:text-blue-400">Reviews</a></li><li><a href="#contact" class="hover:text-blue-400">Contact</a></li></ul></div>
+<div><h4 class="text-sm font-bold mb-4">Contact</h4><ul class="space-y-2 text-xs text-slate-400"><li class="flex items-start gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 shrink-0 mt-0.5 text-blue-400"></i>Andheri West, Mumbai — 400058</li><li class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-blue-400"></i>+91 98765 43210</li><li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-blue-400"></i>info@excelacademy.in</li></ul></div>
+</div>
+<div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"><p class="text-[11px] text-slate-500">© 2025 Excel Academy. All rights reserved.</p><p class="text-[11px] text-slate-500">Designed with ❤️ for Mumbai's students</p></div>
+</div></footer>
+
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/919876543210" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-xl shadow-green-500/30 transition-all hover:scale-110 active:scale-95" aria-label="WhatsApp"><i data-lucide="message-circle" class="w-6 h-6 text-white"></i></a>
+
+<div id="stickyBar" class="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex gap-2 shadow-2xl">
+<a href="#contact" class="flex-1 flex items-center justify-center gap-1.5 bg-blue-600 text-white text-xs font-bold py-3 rounded-xl active:scale-[.97]"><i data-lucide="calendar" class="w-3.5 h-3.5"></i>Book Demo</a>
+<a href="https://wa.me/919876543210" class="flex-1 flex items-center justify-center gap-1.5 bg-green-500 text-white text-xs font-bold py-3 rounded-xl active:scale-[.97]"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i>WhatsApp</a>
+<a href="tel:+919876543210" class="flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-3 rounded-xl"><i data-lucide="phone" class="w-4 h-4"></i></a>
+</div>
+
+<script>
+// Init
+lucide.createIcons();
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('preloader').classList.add('hide'),400));
+window.addEventListener('scroll',()=>{document.getElementById('scrollBar').style.width=(document.documentElement.scrollTop/(document.documentElement.scrollHeight-document.documentElement.clientHeight))*100+'%'});
+
+// Toast
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+
+// Reveal
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('on');obs.unobserve(el.target)}}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// Counter
+const cObs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting&&!el.target.dataset.done){el.target.dataset.done='1';const t=+el.target.dataset.count;let s=0;const step=t/120;const timer=setInterval(()=>{s+=step;if(s>=t){s=t;clearInterval(timer)}el.target.textContent=Math.floor(s).toLocaleString()+(t>100?'+':t<100?'%':'')},16);cObs.unobserve(el.target)}}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+
+// Sticky bar
+window.addEventListener('scroll',()=>{document.getElementById('stickyBar').classList.toggle('vis',window.scrollY>600)});
+
+// Dark mode
+if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');
+
+// WHY US data
+const whyData=[
+{icon:'users',color:'blue',title:'Small Batches of 15',desc:'Every student gets personal attention. Teachers know every child by name.'},
+{icon:'message-circle-question',color:'purple',title:'Dedicated Doubt Solving',desc:'Separate doubt sessions after every class. No question goes unanswered.'},
+{icon:'clipboard-check',color:'amber',title:'Weekly Test Series',desc:'Chapter-wise tests with analysis. Parents get reports on WhatsApp.'},
+{icon:'phone-call',color:'green',title:'Parent-Teacher Meetings',desc:'Monthly PTMs to discuss progress. You know where your child stands.'},
+{icon:'compass',color:'rose',title:'Career Guidance',desc:'We guide on career paths, college admissions, and life skills.'},
+{icon:'scan-line',color:'teal',title:'Attendance Tracking',desc:'Digital attendance with real-time SMS alerts to parents.'},
+{icon:'flame',color:'indigo',title:'Motivational Sessions',desc:'Regular talks by toppers and leaders. Mindset matters.'},
+{icon:'book-open',color:'orange',title:'Printed Notes & MCQ Bank',desc:'Comprehensive material with solved examples and past papers.'},
+{icon:'video',color:'cyan',title:'Recorded Lectures',desc:'All lectures available on student portal for anytime revision.'}
+];
+document.getElementById('whyGrid').innerHTML=whyData.map((w,i)=>`<div class="rv pc hg bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm" style="transition-delay:${i*.05}s"><div class="fi w-11 h-11 rounded-xl bg-${w.color}-50 dark:bg-${w.color}-900/30 flex items-center justify-center mb-3"><i data-lucide="${w.icon}" class="w-5 h-5 text-${w.color}-600"></i></div><h3 class="text-base font-bold mb-1.5">${w.title}</h3><p class="text-xs text-slate-500 leading-relaxed">${w.desc}</p></div>`).join('');
+
+// COURSES data
+const courses=[
+{name:'SSC Board Coaching',cat:'school',color:'blue',badge:'SCHOOL',dur:'8th–10th',subs:['Maths','Science','English','SST']},
+{name:'CBSE Board Coaching',cat:'school',color:'green',badge:'SCHOOL',dur:'8th–12th',subs:['Physics','Chemistry','Maths','Biology']},
+{name:'ICSE Board Coaching',cat:'school',color:'purple',badge:'SCHOOL',dur:'8th–12th',subs:['English Lit','History','Science']},
+{name:'Commerce Coaching',cat:'school',color:'amber',badge:'SCHOOL',dur:'11th–12th',subs:['Accounts','Economics','SP']},
+{name:'NEET Preparation',cat:'comp',color:'rose',badge:'COMPETITIVE',dur:'11th–12th + Dropper',subs:['Biology','Physics','Chemistry']},
+{name:'JEE Main & Advanced',cat:'comp',color:'cyan',badge:'COMPETITIVE',dur:'11th–12th + Dropper',subs:['Maths','Physics','Chemistry']},
+{name:'MHT-CET',cat:'comp',color:'teal',badge:'COMPETITIVE',dur:'12th Pass',subs:['PCM','PCB','Speed Tests']},
+{name:'Olympiad & Scholarship',cat:'comp',color:'yellow',badge:'COMPETITIVE',dur:'5th–10th',subs:['SOF','NMMS','NTSE']},
+{name:'Spoken English',cat:'skill',color:'indigo',badge:'SKILL',dur:'All Ages',subs:['Grammar','Speaking','PD']},
+{name:'Coding & Computer',cat:'skill',color:'gray',badge:'SKILL',dur:'8th–12th',subs:['Python','Web Dev','Tally']}
+];
+const filters=[{f:'all',label:'All Courses'},{f:'school',label:'School'},{f:'comp',label:'Competitive'},{f:'skill',label:'Skill Based'}];
+document.getElementById('filterBtns').innerHTML=filters.map((x,i)=>`<button onclick="filterC('${x.f}')" class="cf text-xs font-semibold px-4 py-2 rounded-xl transition-all ${i===0?'bg-blue-600 text-white shadow-lg shadow-blue-500/25':'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}" data-f="${x.f}">${x.label}</button>`).join('');
+
+function renderCourses(cat){
+document.getElementById('cGrid').innerHTML=courses.filter(c=>cat==='all'||c.cat===cat).map((c,i)=>`<div class="rv pc bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden" style="transition-delay:${i*.05}s"><div class="h-1.5 bg-gradient-to-r from-${c.color}-500 to-${c.color}-600"></div><div class="p-5"><div class="flex items-center justify-between mb-3"><span class="text-[10px] font-bold text-${c.color}-600 bg-${c.color}-50 dark:bg-${c.color}-900/30 px-2.5 py-1 rounded-lg">${c.badge}</span><span class="text-[10px] text-slate-400">${c.dur}</span></div><h3 class="text-lg font-bold mb-1.5">${c.name}</h3><div class="flex flex-wrap gap-1.5 mb-4">${c.subs.map(s=>`<span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded font-medium">${s}</span>`).join('')}</div><div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800"><span class="text-[10px] text-slate-400">Enquire Now →</span><a href="#contact" class="text-xs font-semibold text-blue-600 flex items-center gap-0.5"><i data-lucide="arrow-right" class="w-3 h-3"></i></a></div></div></div>`).join('');
+lucide.createIcons();obsUpdate()}
+function filterC(cat){document.querySelectorAll('.cf').forEach(b=>{b.className=b.dataset.f===cat?'cf text-xs font-semibold px-4 py-2 rounded-xl transition-all bg-blue-600 text-white shadow-lg shadow-blue-500/25':'cf text-xs font-semibold px-4 py-2 rounded-xl transition-all bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'});renderCourses(cat)}
+function obsUpdate(){document.querySelectorAll('.rv:not(.on)').forEach(el=>obs.observe(el))}
+renderCourses('all');
+
+// FACULTY data
+const fac=[
+{name:'Prof. Ramesh Iyer',sub:'Mathematics — HOD',desc:'Ex-IIT Bombay. 15+ yrs. Students scored 100/100.',tags:['IIT-B','15 Yrs'],seed:'fac1'},
+{name:'Dr. Kavita Shah',sub:'Biology — NEET Expert',desc:'Ph.D. Life Sciences. 50+ cleared NEET in 2024.',tags:['Ph.D','12 Yrs'],seed:'fac2'},
+{name:'Sir Ajay Thakur',sub:'Physics — JEE Specialist',desc:'M.Tech NIT. Makes complex Physics simple.',tags:['M.Tech','10 Yrs'],seed:'fac3'},
+{name:"Ma'am Neha Kapoor",sub:'Chemistry — Board Expert',desc:'M.Sc., B.Ed. University topper. Organic Chemistry expert.',tags:['M.Sc','8 Yrs'],seed:'fac4'}
+];
+document.getElementById('facGrid').innerHTML=fac.map((f,i)=>`<div class="rv pc bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm" style="transition-delay:${i*.1}s"><div class="relative"><img src="https://picsum.photos/seed/${f.seed}/400/400.jpg" class="w-full h-48 object-cover"><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent h-16"></div><div class="absolute bottom-2.5 left-3 flex items-center gap-1"><div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div><span class="text-[10px] text-white/80">Available</span></div></div><div class="p-4"><h3 class="font-bold text-sm">${f.name}</h3><p class="text-xs text-blue-600 font-semibold mb-1">${f.sub}</p><p class="text-[11px] text-slate-500 leading-relaxed mb-2">${f.desc}</p><div class="flex gap-1.5">${f.tags.map(t=>`<span class="text-[9px] font-bold bg-blue-50 dark:bg-blue-900/30 text-blue-700 px-1.5 py-0.5 rounded">${t}</span>`).join('')}</div></div></div>`).join('');
+
+// TESTIMONIALS data
+const revs=[
+{name:'Sunita Patel',role:'Parent — Borivali',init:'SP',bg:'blue',text:'"My daughter was struggling with Maths. After joining Excel, she scored 94 in SSC. The teachers genuinely care. Best decision ever."'},
+{name:'Arjun Desai',role:'Student — JEE 2024',init:'AD',bg:'purple',text:'"I cracked JEE Advanced with AIR 892 and got IIT Bombay CS. Sir Ajay\'s Physics classes were extraordinary. Forever grateful."'},
+{name:'Rekha Malhotra',role:'Parent — Andheri East',init:'RM',bg:'green',text:'"As a single working mother, Excel\'s WhatsApp updates & monthly PTMs gave me complete peace of mind. 58% to 87% in one year!"'},
+{name:'Rajesh Jhaveri',role:'Parent — Malad West',init:'RJ',bg:'amber',text:'"Commerce coaching here is top-notch. My daughter scored 96 in Accounts and 94 in Economics in HSC. Highly recommend!"'},
+{name:'Rohan Mehta',role:'Student — NEET 2024',init:'RM',bg:'rose',text:'"Everyone said I can\'t crack NEET. But Excel believed in me. Dr. Kavita ma\'am\'s classes changed everything. 685 in NEET 2024!"'},
+{name:'Amit Kulkarni',role:'Parent — Jogeshwari',init:'AK',bg:'teal',text:'"Both my children study here — one SSC, one CBSE. The parent portal is amazing — I track everything from my phone. Best in Andheri!"'}
+];
+document.getElementById('revGrid').innerHTML=revs.map((r,i)=>`<div class="rv tc pc bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm relative" style="transition-delay:${i*.05}s"><div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div><p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">${r.text}</p><div class="flex items-center gap-2.5 pt-3 border-t border-slate-100 dark:border-slate-800"><div class="w-8 h-8 rounded-full bg-${r.bg}-100 dark:bg-${r.bg}-900/40 flex items-center justify-center text-[10px] font-bold text-${r.bg}-700">${r.init}</div><div><p class="text-xs font-semibold">${r.name}</p><p class="text-[10px] text-slate-400">${r.role}</p></div></div></div>`).join('');
+
+// GALLERY
+const gals=[{s:'g1',h:400,l:'Smart Classroom'},{s:'g2',h:800,l:'Seminar'},{s:'g3',h:450,l:'Award Ceremony'},{s:'g4',h:600,l:'Study Room'},{s:'g5',h:350,l:'Toppers Wall'},{s:'g6',h:500,l:'Science Lab'},{s:'g7',h:400,l:'Annual Event'},{s:'g8',h:700,l:'Library'},{s:'g9',h:400,l:'Doubt Solving'}];
+document.getElementById('galGrid').innerHTML=gals.map((g,i)=>`<div class="rv rounded-2xl overflow-hidden group cursor-pointer relative" style="transition-delay:${i*.05}s"><img src="https://picsum.photos/seed/${g.s}/600/${g.h}.jpg" class="w-full object-cover transition-transform duration-500 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3"><p class="text-white text-xs font-semibold">${g.l}</p></div></div>`).join('');
+
+// FEATURES
+const feats=[
+{icon:'layout-dashboard',color:'blue',title:'Student Portal',desc:'Notes, tests & schedules'},
+{icon:'scan-line',color:'green',title:'Attendance Tracking',desc:'Real-time SMS alerts'},
+{icon:'bar-chart-3',color:'purple',title:'AI Reports',desc:'Weak area analysis'},
+{icon:'smartphone',color:'amber',title:'WhatsApp Updates',desc:'Instant notifications'},
+{icon:'monitor-smartphone',color:'rose',title:'Online Lectures',desc:'HD live + recorded'},
+{icon:'home',color:'teal',title:'Parent Dashboard',desc:'Track from home'},
+{icon:'file-text',color:'indigo',title:'Digital Notes',desc:'PDF on any device'},
+{icon:'circle-check',color:'cyan',title:'Online Tests',desc:'Practice anytime'},
+{icon:'bell-ring',color:'orange',title:'Smart Reminders',desc:'Never miss class'},
+{icon:'brain',color:'lime',title:'Adaptive Learning',desc:'AI adjusts difficulty'}
+];
+document.getElementById('featGrid').innerHTML=feats.map((f,i)=>`<div class="rv pc hg bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-100 dark:border-slate-800 shadow-sm text-center" style="transition-delay:${i*.05}s"><div class="fi w-12 h-12 rounded-xl bg-${f.color}-50 dark:bg-${f.color}-900/30 flex items-center justify-center mx-auto mb-2"><i data-lucide="${f.icon}" class="w-6 h-6 text-${f.color}-600"></i></div><h4 class="text-xs font-bold mb-0.5">${f.title}</h4><p class="text-[10px] text-slate-400">${f.desc}</p></div>`).join('');
+
+// Re-init lucide after dynamic content
+lucide.createIcons();
+// Re-observe new .rv elements
+document.querySelectorAll('.rv:not(.on)').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
